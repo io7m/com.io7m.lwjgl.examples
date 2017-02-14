@@ -29,53 +29,95 @@ import org.osgi.service.component.annotations.Deactivate;
  * LWJGL example.
  */
 
-@Component
+@Component(immediate = true)
 public final class LWJGLExample
 {
   private long context;
+  private Thread thread;
 
   public LWJGLExample()
   {
 
   }
 
+  private void log(
+    final String message)
+  {
+    System.err.printf(
+      "[%s][%s]: %s\n",
+      LWJGLExample.class.getName(),
+      Thread.currentThread().getName(),
+      message);
+  }
+
+  private void logException(
+    final Exception e)
+  {
+    System.err.printf(
+      "[%s][%s]: ERROR: %s\n",
+      LWJGLExample.class.getName(),
+      Thread.currentThread().getName(),
+      e.getMessage());
+    e.printStackTrace();
+  }
+
   @Activate
   private void activate()
   {
-    GLFWErrorCallback.createPrint(System.err).set();
+    this.thread = new Thread(this::doExample);
+    this.thread.setName("renderer");
+    this.thread.start();
+  }
 
-    if (!GLFW.glfwInit()) {
-      throw new IllegalStateException("Unable to initialize GLFW");
+  private void doExample()
+  {
+    try {
+      this.log("activate");
+
+      GLFWErrorCallback.createPrint(System.err).set();
+
+      if (!GLFW.glfwInit()) {
+        throw new IllegalStateException("Unable to initialize GLFW");
+      }
+
+      this.log("creating window");
+      GLFW.glfwDefaultWindowHints();
+      GLFW.glfwWindowHint(GLFW.GLFW_VISIBLE, GLFW.GLFW_FALSE);
+      GLFW.glfwWindowHint(GLFW.GLFW_RESIZABLE, GLFW.GLFW_TRUE);
+      GLFW.glfwWindowHint(GLFW.GLFW_CONTEXT_VERSION_MAJOR, 3);
+      GLFW.glfwWindowHint(GLFW.GLFW_CONTEXT_VERSION_MINOR, 3);
+      GLFW.glfwWindowHint(
+        GLFW.GLFW_OPENGL_PROFILE,
+        GLFW.GLFW_OPENGL_CORE_PROFILE);
+
+      this.context =
+        GLFW.glfwCreateWindow(
+          640,
+          480,
+          "LWJGL3",
+          MemoryUtil.NULL,
+          MemoryUtil.NULL);
+      GLFW.glfwMakeContextCurrent(this.context);
+      GL.createCapabilities();
+
+      this.log("clearing window");
+      GL11.glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
+      GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
+
+      this.log("shutting down");
+      GLFW.glfwMakeContextCurrent(MemoryUtil.NULL);
+      GLFW.glfwDestroyWindow(this.context);
+      GLFW.glfwTerminate();
+
+    } catch (final Exception e) {
+      this.logException(e);
     }
-
-    GLFW.glfwDefaultWindowHints();
-    GLFW.glfwWindowHint(GLFW.GLFW_VISIBLE, GLFW.GLFW_FALSE);
-    GLFW.glfwWindowHint(GLFW.GLFW_RESIZABLE, GLFW.GLFW_TRUE);
-    GLFW.glfwWindowHint(GLFW.GLFW_CONTEXT_VERSION_MAJOR, 3);
-    GLFW.glfwWindowHint(GLFW.GLFW_CONTEXT_VERSION_MINOR, 3);
-    GLFW.glfwWindowHint(
-      GLFW.GLFW_OPENGL_PROFILE,
-      GLFW.GLFW_OPENGL_CORE_PROFILE);
-
-    this.context =
-      GLFW.glfwCreateWindow(
-        640,
-        480,
-        "LWJGL3",
-        MemoryUtil.NULL,
-        MemoryUtil.NULL);
-    GLFW.glfwMakeContextCurrent(this.context);
-    GL.createCapabilities();
-
-    GL11.glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
-    GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
   }
 
   @Deactivate
   private void deactivate()
   {
-    GLFW.glfwMakeContextCurrent(MemoryUtil.NULL);
-    GLFW.glfwDestroyWindow(this.context);
-    GLFW.glfwTerminate();
+    this.log("deactivate");
+    this.thread = null;
   }
 }
