@@ -5,7 +5,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.io7m.bundles</groupId>
+  <groupId>org.lwjgl.osgi</groupId>
   <artifactId>org.lwjgl.example</artifactId>
   <version>0.1.0</version>
 
@@ -70,17 +70,17 @@
 
   <dependencies>
     <dependency>
-      <groupId>com.io7m.bundles</groupId>
+      <groupId>org.lwjgl.osgi</groupId>
       <artifactId>org.lwjgl.lwjgl</artifactId>
       <version>3.1.2-SNAPSHOT</version>
     </dependency>
     <dependency>
-      <groupId>com.io7m.bundles</groupId>
+      <groupId>org.lwjgl.osgi</groupId>
       <artifactId>org.lwjgl.glfw</artifactId>
       <version>3.1.2-SNAPSHOT</version>
     </dependency>
     <dependency>
-      <groupId>com.io7m.bundles</groupId>
+      <groupId>org.lwjgl.osgi</groupId>
       <artifactId>org.lwjgl.opengl</artifactId>
       <version>3.1.2-SNAPSHOT</version>
     </dependency>
