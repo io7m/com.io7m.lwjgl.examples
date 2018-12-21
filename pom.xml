@@ -18,9 +18,10 @@
 
   <name>com.io7m.lwjgl.examples</name>
   <description>LWJGL OSGi examples</description>
-  <url>http://github.com/io7m/org.lwjgl.example</url>
+  <url>http://github.com/io7m/com.io7m.lwjgl.examples</url>
 
   <modules>
+    <module>com.io7m.lwjgl.examples.opengl</module>
   </modules>
 
   <properties>
@@ -35,9 +36,9 @@
   </licenses>
 
   <scm>
-    <url>https://github.com/io7m/org.lwjgl.example</url>
-    <connection>scm:git:https://github.com/io7m/org.lwjgl.example</connection>
-    <developerConnection>scm:git:https://github.com/io7m/org.lwjgl.example</developerConnection>
+    <url>https://github.com/io7m/com.io7m.lwjgl.examples</url>
+    <connection>scm:git:https://github.com/io7m/com.io7m.lwjgl.examples</connection>
+    <developerConnection>scm:git:https://github.com/io7m/com.io7m.lwjgl.examples</developerConnection>
   </scm>
 
   <developers>
@@ -50,7 +51,7 @@
   </developers>
 
   <issueManagement>
-    <url>http://github.com/io7m/org.lwjgl.example/issues</url>
+    <url>http://github.com/io7m/com.io7m.lwjgl.examples/issues</url>
     <system>GitHub Issues</system>
   </issueManagement>
 
@@ -58,7 +59,7 @@
     <site>
       <id>io7m.com</id>
       <name>io7m.com</name>
-      <url>https://www.io7m.com/software/org.lwjgl.example</url>
+      <url>https://www.io7m.com/software/com.io7m.lwjgl.examples</url>
     </site>
     <repository>
       <id>sonatype-nexus-staging</id>
@@ -68,7 +69,7 @@
 
   <ciManagement>
     <system>Travis CI</system>
-    <url>https://travis-ci.org/io7m/org.lwjgl.example</url>
+    <url>https://travis-ci.org/io7m/com.io7m.lwjgl.examples</url>
   </ciManagement>
 
   <dependencies>
