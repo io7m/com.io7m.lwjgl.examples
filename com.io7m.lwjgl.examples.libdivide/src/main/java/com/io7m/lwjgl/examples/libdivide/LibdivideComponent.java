@@ -14,29 +14,30 @@
  * IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-package com.io7m.lwjgl.examples.jawt;
+package com.io7m.lwjgl.examples.libdivide;
 
-import org.lwjgl.system.jawt.JAWT;
+import org.lwjgl.util.libdivide.LibDivide;
+import org.lwjgl.util.libdivide.LibDivideU32;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 
 import java.util.logging.Logger;
 
 /**
- * An example JAWT component.
+ * An example Libdivide component.
  */
 
 @Component(immediate = true)
-public final class JAWTComponent
+public final class LibdivideComponent
 {
   private static final Logger LOG =
-    Logger.getLogger(JAWTComponent.class.getCanonicalName());
+    Logger.getLogger(LibdivideComponent.class.getCanonicalName());
 
   /**
    * Construct a component.
    */
 
-  public JAWTComponent()
+  public LibdivideComponent()
   {
 
   }
@@ -50,9 +51,8 @@ public final class JAWTComponent
   {
     LOG.info("onActivate");
 
-    // XXX: What's the right way to exercise JAWT?
-    try (var jawt = JAWT.calloc()) {
-      // ?
+    try (var u32 = LibDivideU32.calloc()) {
+      LibDivide.libdivide_u32_do(23, u32);
     }
   }
 }

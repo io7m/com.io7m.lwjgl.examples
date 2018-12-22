@@ -14,45 +14,9 @@
  * IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-package com.io7m.lwjgl.examples.jawt;
-
-import org.lwjgl.system.jawt.JAWT;
-import org.osgi.service.component.annotations.Activate;
-import org.osgi.service.component.annotations.Component;
-
-import java.util.logging.Logger;
-
 /**
- * An example JAWT component.
+ * An example Libdivide component.
  */
 
-@Component(immediate = true)
-public final class JAWTComponent
-{
-  private static final Logger LOG =
-    Logger.getLogger(JAWTComponent.class.getCanonicalName());
-
-  /**
-   * Construct a component.
-   */
-
-  public JAWTComponent()
-  {
-
-  }
-
-  /**
-   * Called by the OSGi runtime when the component is activated.
-   */
-
-  @Activate
-  public void onActivate()
-  {
-    LOG.info("onActivate");
-
-    // XXX: What's the right way to exercise JAWT?
-    try (var jawt = JAWT.calloc()) {
-      // ?
-    }
-  }
-}
+@org.osgi.annotation.bundle.Export
+package com.io7m.lwjgl.examples.libdivide;
