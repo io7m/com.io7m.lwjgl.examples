@@ -22,10 +22,12 @@
 
   <modules>
     <module>com.io7m.lwjgl.examples.opengl</module>
+    <module>com.io7m.lwjgl.examples.openal</module>
   </modules>
 
   <properties>
     <io7m.api.previousVersion>0.0.1</io7m.api.previousVersion>
+    <org.lwjgl.version>3.2.1</org.lwjgl.version>
   </properties>
 
   <licenses>
@@ -72,8 +74,36 @@
     <url>https://travis-ci.org/io7m/com.io7m.lwjgl.examples</url>
   </ciManagement>
 
-  <dependencies>
-  </dependencies>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.osgi</groupId>
+        <artifactId>org.osgi.service.component.annotations</artifactId>
+        <version>1.4.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.osgi</groupId>
+        <artifactId>org.osgi.annotation.bundle</artifactId>
+        <version>1.0.0</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.lwjgl.osgi</groupId>
+        <artifactId>org.lwjgl.openal</artifactId>
+        <version>${org.lwjgl.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.lwjgl.osgi</groupId>
+        <artifactId>org.lwjgl.opengl</artifactId>
+        <version>${org.lwjgl.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.lwjgl.osgi</groupId>
+        <artifactId>org.lwjgl.glfw</artifactId>
+        <version>${org.lwjgl.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
   <build>
     <pluginManagement>
