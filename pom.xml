@@ -30,6 +30,7 @@
     <module>com.io7m.lwjgl.examples.libdivide</module>
     <module>com.io7m.lwjgl.examples.lmdb</module>
     <module>com.io7m.lwjgl.examples.lz4</module>
+    <module>com.io7m.lwjgl.examples.meow</module>
     <module>com.io7m.lwjgl.examples.openal</module>
     <module>com.io7m.lwjgl.examples.opengl</module>
   </modules>
@@ -159,6 +160,11 @@
       <dependency>
         <groupId>org.lwjgl.osgi</groupId>
         <artifactId>org.lwjgl.zstd</artifactId>
+        <version>${org.lwjgl.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.lwjgl.osgi</groupId>
+        <artifactId>org.lwjgl.meow</artifactId>
         <version>${org.lwjgl.version}</version>
       </dependency>
     </dependencies>
