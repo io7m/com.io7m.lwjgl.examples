@@ -9,9 +9,11 @@ import org.osgi.framework.Constants;
 import org.osgi.framework.launch.Framework;
 
 import java.io.IOException;
+import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -47,7 +49,7 @@ public final class TestAllComponents
       final var bundles = new ArrayList<Bundle>(jars.size());
       for (final var jar : jars) {
         LOG.info("install: " + jar);
-        bundles.add(context.installBundle(jar));
+        bundles.add(context.installBundle(jar.toString()));
       }
 
       for (final var bundle : bundles) {
@@ -81,7 +83,7 @@ public final class TestAllComponents
       || name.contains("org.lwjgl.ovr");
   }
 
-  private static List<String> findJars()
+  private static List<URI> findJars()
     throws IOException
   {
     try (var stream = TestAllComponents.class.getResourceAsStream(
@@ -89,7 +91,7 @@ public final class TestAllComponents
       final var text = new String(stream.readAllBytes(), StandardCharsets.UTF_8);
       return List.of(text.split(":"))
         .stream()
-        .map(file -> "file://" + file)
+        .map(file -> Paths.get(file).toUri())
         .collect(Collectors.toList());
     }
   }
