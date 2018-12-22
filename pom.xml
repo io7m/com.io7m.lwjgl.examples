@@ -24,6 +24,7 @@
     <module>com.io7m.lwjgl.examples.assimp</module>
     <module>com.io7m.lwjgl.examples.bgfx</module>
     <module>com.io7m.lwjgl.examples.cuda</module>
+    <module>com.io7m.lwjgl.examples.egl</module>
     <module>com.io7m.lwjgl.examples.openal</module>
     <module>com.io7m.lwjgl.examples.opengl</module>
   </modules>
@@ -118,6 +119,11 @@
       <dependency>
         <groupId>org.lwjgl.osgi</groupId>
         <artifactId>org.lwjgl.cuda</artifactId>
+        <version>${org.lwjgl.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.lwjgl.osgi</groupId>
+        <artifactId>org.lwjgl.egl</artifactId>
         <version>${org.lwjgl.version}</version>
       </dependency>
     </dependencies>
