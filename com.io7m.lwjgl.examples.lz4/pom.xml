@@ -10,12 +10,12 @@
     <artifactId>com.io7m.lwjgl.examples</artifactId>
     <version>0.0.1</version>
   </parent>
-  <artifactId>com.io7m.lwjgl.examples.lmdb</artifactId>
+  <artifactId>com.io7m.lwjgl.examples.lz4</artifactId>
 
   <packaging>jar</packaging>
-  <description>LWJGL OSGi examples (LMDB)</description>
+  <description>LWJGL OSGi examples (LZ4)</description>
   <url>http://github.com/io7m/org.lwjgl.example</url>
-  <name>com.io7m.lwjgl.examples.lmdb</name>
+  <name>com.io7m.lwjgl.examples.lz4</name>
 
   <dependencies>
     <dependency>
@@ -31,11 +31,7 @@
 
     <dependency>
       <groupId>org.lwjgl.osgi</groupId>
-      <artifactId>org.lwjgl.lwjgl</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.lwjgl.osgi</groupId>
-      <artifactId>org.lwjgl.lmdb</artifactId>
+      <artifactId>org.lwjgl.lz4</artifactId>
     </dependency>
   </dependencies>
 
