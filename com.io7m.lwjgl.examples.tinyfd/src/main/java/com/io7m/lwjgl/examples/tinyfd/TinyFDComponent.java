@@ -14,31 +14,29 @@
  * IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-package com.io7m.lwjgl.examples.opengl;
+package com.io7m.lwjgl.examples.tinyfd;
 
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.opengl.GL;
-import org.lwjgl.opengl.GL11;
+import org.lwjgl.util.tinyfd.TinyFileDialogs;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 
 import java.util.logging.Logger;
 
 /**
- * An example OpenGL component.
+ * An example TinyFD component.
  */
 
 @Component(immediate = true)
-public final class OpenGLComponent
+public final class TinyFDComponent
 {
   private static final Logger LOG =
-    Logger.getLogger(OpenGLComponent.class.getCanonicalName());
+    Logger.getLogger(TinyFDComponent.class.getCanonicalName());
 
   /**
    * Construct a component.
    */
 
-  public OpenGLComponent()
+  public TinyFDComponent()
   {
 
   }
@@ -53,41 +51,7 @@ public final class OpenGLComponent
     LOG.info("onActivate");
 
     try {
-      LOG.info("initializing GLFW");
-      GLFW.glfwInit();
-
-      GLFW.glfwWindowHint(GLFW.GLFW_VISIBLE, GLFW.GLFW_FALSE);
-
-      LOG.info("creating window");
-      final var window =
-        GLFW.glfwCreateWindow(640, 480, "Hello World", 0L, 0L);
-
-      if (window == 0L) {
-        LOG.info("creating window failed, terminating");
-        GLFW.glfwTerminate();
-        return;
-      }
-
-      LOG.info("making context current");
-      GLFW.glfwMakeContextCurrent(window);
-
-      LOG.info("creating OpenGL capabilities");
-      GL.createCapabilities();
-
-      LOG.info("clearing window");
-      GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
-
-      LOG.info("swapping buffers");
-      GLFW.glfwSwapBuffers(window);
-
-      LOG.info("polling events");
-      GLFW.glfwPollEvents();
-
-      LOG.info("destroying window");
-      GLFW.glfwDestroyWindow(window);
-
-      LOG.info("terminating");
-      GLFW.glfwTerminate();
+      TinyFileDialogs.tinyfd_beep();
     } finally {
       LOG.info("onActivate: done");
     }

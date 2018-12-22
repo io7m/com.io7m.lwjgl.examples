@@ -32,13 +32,38 @@
     <module>com.io7m.lwjgl.examples.lz4</module>
     <module>com.io7m.lwjgl.examples.meow</module>
     <module>com.io7m.lwjgl.examples.nanovg</module>
+    <module>com.io7m.lwjgl.examples.nfd</module>
+    <module>com.io7m.lwjgl.examples.nuklear</module>
+    <module>com.io7m.lwjgl.examples.odbc</module>
     <module>com.io7m.lwjgl.examples.openal</module>
+    <module>com.io7m.lwjgl.examples.opencl</module>
     <module>com.io7m.lwjgl.examples.opengl</module>
+    <module>com.io7m.lwjgl.examples.opus</module>
+    <module>com.io7m.lwjgl.examples.ovr</module>
+    <module>com.io7m.lwjgl.examples.par</module>
+    <module>com.io7m.lwjgl.examples.remotery</module>
+    <module>com.io7m.lwjgl.examples.rpmalloc</module>
+    <module>com.io7m.lwjgl.examples.sse</module>
+    <module>com.io7m.lwjgl.examples.stb</module>
+    <module>com.io7m.lwjgl.examples.tests</module>
+    <module>com.io7m.lwjgl.examples.tinyexr</module>
+    <module>com.io7m.lwjgl.examples.tinyfd</module>
+    <module>com.io7m.lwjgl.examples.tootle</module>
+    <module>com.io7m.lwjgl.examples.vma</module>
+    <module>com.io7m.lwjgl.examples.vulkan</module>
+    <module>com.io7m.lwjgl.examples.xxhash</module>
+    <module>com.io7m.lwjgl.examples.yoga</module>
+    <module>com.io7m.lwjgl.examples.zstd</module>
   </modules>
 
   <properties>
     <io7m.api.previousVersion>0.0.1</io7m.api.previousVersion>
     <org.lwjgl.version>3.2.1</org.lwjgl.version>
+
+    <org.apache.felix.scr.version>2.1.8</org.apache.felix.scr.version>
+    <org.apache.felix.framework.version>6.0.1</org.apache.felix.framework.version>
+    <org.immutables.value.version>2.7.1</org.immutables.value.version>
+    <org.apache.felix.log.version>1.2.0</org.apache.felix.log.version>
   </properties>
 
   <licenses>
@@ -96,6 +121,22 @@
         <groupId>org.osgi</groupId>
         <artifactId>org.osgi.annotation.bundle</artifactId>
         <version>1.0.0</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>org.apache.felix.scr</artifactId>
+        <version>${org.apache.felix.scr.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>org.apache.felix.framework</artifactId>
+        <version>${org.apache.felix.framework.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>org.apache.felix.log</artifactId>
+        <version>${org.apache.felix.log.version}</version>
       </dependency>
 
       <dependency>
