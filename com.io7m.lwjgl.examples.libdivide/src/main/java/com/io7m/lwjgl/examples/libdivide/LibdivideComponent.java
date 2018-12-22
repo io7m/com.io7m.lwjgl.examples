@@ -51,8 +51,12 @@ public final class LibdivideComponent
   {
     LOG.info("onActivate");
 
-    try (var u32 = LibDivideU32.calloc()) {
-      LibDivide.libdivide_u32_do(23, u32);
+    try {
+      try (var u32 = LibDivideU32.calloc()) {
+        LibDivide.libdivide_u32_do(23, u32);
+      }
+    } finally {
+      LOG.info("onActivate: done");
     }
   }
 }

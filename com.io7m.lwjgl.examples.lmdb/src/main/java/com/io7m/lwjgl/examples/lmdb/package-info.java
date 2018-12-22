@@ -14,47 +14,9 @@
  * IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-package com.io7m.lwjgl.examples.egl;
-
-import org.lwjgl.egl.EGL10;
-import org.osgi.service.component.annotations.Activate;
-import org.osgi.service.component.annotations.Component;
-
-import java.util.logging.Logger;
-
 /**
- * An example EGL component.
+ * An example LMDB component.
  */
 
-@Component(immediate = true)
-public final class EGLComponent
-{
-  private static final Logger LOG =
-    Logger.getLogger(EGLComponent.class.getCanonicalName());
-
-  /**
-   * Construct a component.
-   */
-
-  public EGLComponent()
-  {
-
-  }
-
-  /**
-   * Called by the OSGi runtime when the component is activated.
-   */
-
-  @Activate
-  public void onActivate()
-  {
-    LOG.info("onActivate");
-
-    try {
-      final var e = EGL10.eglGetError();
-      LOG.info("eglGetError: " + e);
-    } finally {
-      LOG.info("onActivate: done");
-    }
-  }
-}
+@org.osgi.annotation.bundle.Export
+package com.io7m.lwjgl.examples.lmdb;

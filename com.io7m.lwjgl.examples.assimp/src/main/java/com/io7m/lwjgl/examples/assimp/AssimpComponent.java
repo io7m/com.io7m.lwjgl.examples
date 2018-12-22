@@ -50,10 +50,14 @@ public final class AssimpComponent
   {
     LOG.info("onActivate");
 
-    LOG.info(() -> String.format(
-      "Assimp: %d %d %d",
-      Integer.valueOf(Assimp.aiGetVersionMajor()),
-      Integer.valueOf(Assimp.aiGetVersionMinor()),
-      Integer.valueOf(Assimp.aiGetVersionRevision())));
+    try {
+      LOG.info(() -> String.format(
+        "Assimp: %d %d %d",
+        Integer.valueOf(Assimp.aiGetVersionMajor()),
+        Integer.valueOf(Assimp.aiGetVersionMinor()),
+        Integer.valueOf(Assimp.aiGetVersionRevision())));
+    } finally {
+      LOG.info("onActivate: done");
+    }
   }
 }

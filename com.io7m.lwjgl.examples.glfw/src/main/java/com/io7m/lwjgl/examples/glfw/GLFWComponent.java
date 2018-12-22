@@ -49,10 +49,15 @@ public final class GLFWComponent
   public void onActivate()
   {
     LOG.info("onActivate");
-    LOG.info("initializing GLFW");
-    GLFW.glfwInit();
 
-    LOG.info("terminating");
-    GLFW.glfwTerminate();
+    try {
+      LOG.info("initializing GLFW");
+      GLFW.glfwInit();
+
+      LOG.info("terminating");
+      GLFW.glfwTerminate();
+    } finally {
+      LOG.info("onActivate: done");
+    }
   }
 }

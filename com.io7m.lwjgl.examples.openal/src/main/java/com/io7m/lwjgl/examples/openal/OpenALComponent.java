@@ -50,13 +50,16 @@ public final class OpenALComponent
   {
     LOG.info("onActivate");
 
-    final var name =
-      ALC10.alcGetString(0L, ALC10.ALC_DEFAULT_DEVICE_SPECIFIER);
+    try {
+      final var name = ALC10.alcGetString(0L, ALC10.ALC_DEFAULT_DEVICE_SPECIFIER);
 
-    LOG.info("opening device");
-    final var device = ALC10.alcOpenDevice(name);
+      LOG.info("opening device");
+      final var device = ALC10.alcOpenDevice(name);
 
-    LOG.info("closing device");
-    ALC10.alcCloseDevice(device);
+      LOG.info("closing device");
+      ALC10.alcCloseDevice(device);
+    } finally {
+      LOG.info("onActivate: done");
+    }
   }
 }

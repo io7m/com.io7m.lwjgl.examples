@@ -51,10 +51,14 @@ public final class BgfxComponent
   {
     LOG.info("onActivate");
 
-    LOG.info("initializing");
-    final var init = BGFXInit.create();
+    try {
+      LOG.info("initializing");
+      final var init = BGFXInit.create();
 
-    LOG.info("starting");
-    final var bgfx = BGFX.bgfx_init(init);
+      LOG.info("starting");
+      final var bgfx = BGFX.bgfx_init(init);
+    } finally {
+      LOG.info("onActivate: done");
+    }
   }
 }

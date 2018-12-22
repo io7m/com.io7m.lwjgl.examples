@@ -51,13 +51,17 @@ public final class CudaComponent
     LOG.info("onActivate");
 
     try {
-      final var result = CU.cuInit(0);
-      LOG.info(() -> "cuInit: " + result);
-    } catch (final UnsatisfiedLinkError e) {
-      if (!e.getMessage().contains("libnvcuda.so")) {
-        throw e;
+      try {
+        final var result = CU.cuInit(0);
+        LOG.info(() -> "cuInit: " + result);
+      } catch (final UnsatisfiedLinkError e) {
+        if (!e.getMessage().contains("libnvcuda.so")) {
+          throw e;
+        }
+        LOG.info("CUDA is not supported on this system");
       }
-      LOG.info("CUDA is not supported on this system");
+    } finally {
+      LOG.info("onActivate: done");
     }
   }
 }

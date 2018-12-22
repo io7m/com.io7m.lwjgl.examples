@@ -14,29 +14,30 @@
  * IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-package com.io7m.lwjgl.examples.jawt;
+package com.io7m.lwjgl.examples.lmdb;
 
-import org.lwjgl.system.jawt.JAWT;
+import org.lwjgl.PointerBuffer;
+import org.lwjgl.util.lmdb.LMDB;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 
 import java.util.logging.Logger;
 
 /**
- * An example JAWT component.
+ * An example LMDB component.
  */
 
 @Component(immediate = true)
-public final class JAWTComponent
+public final class LMDBComponent
 {
   private static final Logger LOG =
-    Logger.getLogger(JAWTComponent.class.getCanonicalName());
+    Logger.getLogger(LMDBComponent.class.getCanonicalName());
 
   /**
    * Construct a component.
    */
 
-  public JAWTComponent()
+  public LMDBComponent()
   {
 
   }
@@ -51,10 +52,9 @@ public final class JAWTComponent
     LOG.info("onActivate");
 
     try {
-      // XXX: What's the right way to exercise JAWT?
-      try (var jawt = JAWT.calloc()) {
-        // ?
-      }
+      final var buffer = PointerBuffer.allocateDirect(1);
+      LOG.info("opening environment");
+      final var result = LMDB.mdb_env_create(buffer);
     } finally {
       LOG.info("onActivate: done");
     }

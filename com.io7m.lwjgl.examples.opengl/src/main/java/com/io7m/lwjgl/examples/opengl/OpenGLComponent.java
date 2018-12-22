@@ -51,38 +51,43 @@ public final class OpenGLComponent
   public void onActivate()
   {
     LOG.info("onActivate");
-    LOG.info("initializing GLFW");
-    GLFW.glfwInit();
 
-    LOG.info("creating window");
-    final var window =
-      GLFW.glfwCreateWindow(640, 480, "Hello World", 0L, 0L);
+    try {
+      LOG.info("initializing GLFW");
+      GLFW.glfwInit();
 
-    if (window == 0L) {
-      LOG.info("creating window failed, terminating");
+      LOG.info("creating window");
+      final var window =
+        GLFW.glfwCreateWindow(640, 480, "Hello World", 0L, 0L);
+
+      if (window == 0L) {
+        LOG.info("creating window failed, terminating");
+        GLFW.glfwTerminate();
+        return;
+      }
+
+      LOG.info("making context current");
+      GLFW.glfwMakeContextCurrent(window);
+
+      LOG.info("creating OpenGL capabilities");
+      GL.createCapabilities();
+
+      LOG.info("clearing window");
+      GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
+
+      LOG.info("swapping buffers");
+      GLFW.glfwSwapBuffers(window);
+
+      LOG.info("polling events");
+      GLFW.glfwPollEvents();
+
+      LOG.info("destroying window");
+      GLFW.glfwDestroyWindow(window);
+
+      LOG.info("terminating");
       GLFW.glfwTerminate();
-      return;
+    } finally {
+      LOG.info("onActivate: done");
     }
-
-    LOG.info("making context current");
-    GLFW.glfwMakeContextCurrent(window);
-
-    LOG.info("creating OpenGL capabilities");
-    GL.createCapabilities();
-
-    LOG.info("clearing window");
-    GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
-
-    LOG.info("swapping buffers");
-    GLFW.glfwSwapBuffers(window);
-
-    LOG.info("polling events");
-    GLFW.glfwPollEvents();
-
-    LOG.info("destroying window");
-    GLFW.glfwDestroyWindow(window);
-
-    LOG.info("terminating");
-    GLFW.glfwTerminate();
   }
 }
