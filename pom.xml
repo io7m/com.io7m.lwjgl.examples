@@ -25,6 +25,7 @@
     <module>com.io7m.lwjgl.examples.bgfx</module>
     <module>com.io7m.lwjgl.examples.cuda</module>
     <module>com.io7m.lwjgl.examples.egl</module>
+    <module>com.io7m.lwjgl.examples.glfw</module>
     <module>com.io7m.lwjgl.examples.openal</module>
     <module>com.io7m.lwjgl.examples.opengl</module>
   </modules>
