@@ -1,18 +1,15 @@
 package com.io7m.lwjgl.examples.tests;
 
-import org.apache.felix.framework.Felix;
 import org.apache.felix.framework.FrameworkFactory;
 import org.junit.jupiter.api.Test;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleException;
 import org.osgi.framework.Constants;
-import org.osgi.framework.launch.Framework;
 
 import java.io.IOException;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
