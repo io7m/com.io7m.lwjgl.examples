@@ -14,29 +14,30 @@
  * IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-package com.io7m.lwjgl.examples.assimp;
+package com.io7m.lwjgl.examples.bgfx;
 
-import org.lwjgl.assimp.Assimp;
+import org.lwjgl.bgfx.BGFX;
+import org.lwjgl.bgfx.BGFXInit;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 
 import java.util.logging.Logger;
 
 /**
- * An example Assimp component.
+ * An example Bgfx component.
  */
 
 @Component(immediate = true)
-public final class AssimpComponent
+public final class BgfxComponent
 {
   private static final Logger LOG =
-    Logger.getLogger(AssimpComponent.class.getCanonicalName());
+    Logger.getLogger(BgfxComponent.class.getCanonicalName());
 
   /**
    * Construct a component.
    */
 
-  public AssimpComponent()
+  public BgfxComponent()
   {
 
   }
@@ -50,10 +51,10 @@ public final class AssimpComponent
   {
     LOG.info("onActivate");
 
-    LOG.info(() -> String.format(
-      "Assimp: %d %d %d",
-      Integer.valueOf(Assimp.aiGetVersionMajor()),
-      Integer.valueOf(Assimp.aiGetVersionMinor()),
-      Integer.valueOf(Assimp.aiGetVersionRevision())));
+    LOG.info("initializing");
+    final var init = BGFXInit.create();
+
+    LOG.info("starting");
+    final var bgfx = BGFX.bgfx_init(init);
   }
 }
