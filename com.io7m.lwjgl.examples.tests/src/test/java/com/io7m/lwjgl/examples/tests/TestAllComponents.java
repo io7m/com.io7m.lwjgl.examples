@@ -71,7 +71,6 @@ public final class TestAllComponents
     return System.getProperty("os.name").toLowerCase().startsWith("windows");
   }
 
-
   private static boolean isOVR(
     final Bundle bundle)
   {
