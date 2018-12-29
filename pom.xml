@@ -27,6 +27,7 @@
     <module>com.io7m.lwjgl.examples.egl</module>
     <module>com.io7m.lwjgl.examples.glfw</module>
     <module>com.io7m.lwjgl.examples.jawt</module>
+    <module>com.io7m.lwjgl.examples.jemalloc</module>
     <module>com.io7m.lwjgl.examples.libdivide</module>
     <module>com.io7m.lwjgl.examples.lmdb</module>
     <module>com.io7m.lwjgl.examples.lz4</module>
@@ -182,6 +183,11 @@
       <dependency>
         <groupId>org.lwjgl.osgi</groupId>
         <artifactId>org.lwjgl.jawt</artifactId>
+        <version>${org.lwjgl.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.lwjgl.osgi</groupId>
+        <artifactId>org.lwjgl.jemalloc</artifactId>
         <version>${org.lwjgl.version}</version>
       </dependency>
       <dependency>
