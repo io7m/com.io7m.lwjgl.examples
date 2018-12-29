@@ -58,7 +58,7 @@
 
   <properties>
     <io7m.api.previousVersion>0.0.1</io7m.api.previousVersion>
-    <org.lwjgl.version>3.2.1</org.lwjgl.version>
+    <org.lwjgl.version>3.2.1.1</org.lwjgl.version>
 
     <org.apache.felix.scr.version>2.1.8</org.apache.felix.scr.version>
     <org.apache.felix.framework.version>6.0.1</org.apache.felix.framework.version>
