@@ -25,6 +25,14 @@ import org.lwjgl.util.opus.Opus;
 import org.lwjgl.util.par.ParShapes;
 import org.lwjgl.util.remotery.Remotery;
 import org.lwjgl.util.simd.SSE;
+import org.lwjgl.util.tinyexr.TinyEXR;
+import org.lwjgl.util.tinyfd.TinyFileDialogs;
+import org.lwjgl.util.tootle.Tootle;
+import org.lwjgl.util.vma.Vma;
+import org.lwjgl.util.xxhash.XXHash;
+import org.lwjgl.util.yoga.Yoga;
+import org.lwjgl.util.zstd.Zstd;
+import org.lwjgl.vulkan.VK;
 
 import java.lang.module.ModuleFinder;
 import java.nio.file.Path;
@@ -201,6 +209,62 @@ public final class TestModuleDescriptors
     throws Exception
   {
     checkModuleName("org.lwjgl.stb", STBImage.class);
+  }
+
+  @Test
+  public void testTinyEXR()
+    throws Exception
+  {
+    checkModuleName("org.lwjgl.tinyexr", TinyEXR.class);
+  }
+
+  @Test
+  public void testTinyFD()
+    throws Exception
+  {
+    checkModuleName("org.lwjgl.tinyfd", TinyFileDialogs.class);
+  }
+
+  @Test
+  public void testTootle()
+    throws Exception
+  {
+    checkModuleName("org.lwjgl.tootle", Tootle.class);
+  }
+
+  @Test
+  public void testVMA()
+    throws Exception
+  {
+    checkModuleName("org.lwjgl.vma", Vma.class);
+  }
+
+  @Test
+  public void testVulkan()
+    throws Exception
+  {
+    checkModuleName("org.lwjgl.vulkan", VK.class);
+  }
+
+  @Test
+  public void testXXHash()
+    throws Exception
+  {
+    checkModuleName("org.lwjgl.xxhash", XXHash.class);
+  }
+
+  @Test
+  public void testYoga()
+    throws Exception
+  {
+    checkModuleName("org.lwjgl.yoga", Yoga.class);
+  }
+
+  @Test
+  public void testZstandard()
+    throws Exception
+  {
+    checkModuleName("org.lwjgl.zstd", Zstd.class);
   }
 
   private static void checkModuleName(
