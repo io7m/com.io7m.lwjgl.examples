@@ -15,8 +15,8 @@
  */
 
 /**
- * An example LLVM component.
+ * An example ShaderC component.
  */
 
 @org.osgi.annotation.bundle.Export
-package com.io7m.lwjgl.examples.llvm;
+package com.io7m.lwjgl.examples.shaderc;

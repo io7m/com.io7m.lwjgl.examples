@@ -6,6 +6,7 @@ import org.lwjgl.bgfx.BGFXInit;
 import org.lwjgl.cuda.CU;
 import org.lwjgl.egl.EGL;
 import org.lwjgl.glfw.GLFW;
+import org.lwjgl.llvm.LLVMCore;
 import org.lwjgl.nanovg.NanoVG;
 import org.lwjgl.nuklear.Nuklear;
 import org.lwjgl.odbc.SQL;
@@ -24,6 +25,7 @@ import org.lwjgl.util.nfd.NativeFileDialog;
 import org.lwjgl.util.opus.Opus;
 import org.lwjgl.util.par.ParShapes;
 import org.lwjgl.util.remotery.Remotery;
+import org.lwjgl.util.shaderc.Shaderc;
 import org.lwjgl.util.simd.SSE;
 import org.lwjgl.util.tinyexr.TinyEXR;
 import org.lwjgl.util.tinyfd.TinyFileDialogs;
@@ -265,6 +267,20 @@ public final class TestModuleDescriptors
     throws Exception
   {
     checkModuleName("org.lwjgl.zstd", Zstd.class);
+  }
+
+  @Test
+  public void testLLVM()
+    throws Exception
+  {
+    checkModuleName("org.lwjgl.llvm", LLVMCore.class);
+  }
+
+  @Test
+  public void testShaderC()
+    throws Exception
+  {
+    checkModuleName("org.lwjgl.shaderc", Shaderc.class);
   }
 
   private static void checkModuleName(

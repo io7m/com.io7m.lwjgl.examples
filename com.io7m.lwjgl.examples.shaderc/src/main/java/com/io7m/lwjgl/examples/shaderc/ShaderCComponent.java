@@ -14,9 +14,47 @@
  * IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+package com.io7m.lwjgl.examples.shaderc;
+
+import org.lwjgl.util.shaderc.Shaderc;
+import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.component.annotations.Component;
+
+import java.util.logging.Logger;
+
 /**
  * An example LLVM component.
  */
 
-@org.osgi.annotation.bundle.Export
-package com.io7m.lwjgl.examples.llvm;
+@Component(immediate = true)
+public final class ShaderCComponent
+{
+  private static final Logger LOG =
+    Logger.getLogger(ShaderCComponent.class.getCanonicalName());
+
+  /**
+   * Construct a component.
+   */
+
+  public ShaderCComponent()
+  {
+
+  }
+
+  /**
+   * Called by the OSGi runtime when the component is activated.
+   */
+
+  @Activate
+  public void onActivate()
+  {
+    LOG.info("onActivate");
+
+    try {
+      final var addr = Shaderc.shaderc_compiler_initialize();
+      LOG.info("shaderc: 0x" + Long.toUnsignedString(addr, 16));
+    } finally {
+      LOG.info("onActivate: done");
+    }
+  }
+}

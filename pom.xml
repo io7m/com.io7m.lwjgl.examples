@@ -56,6 +56,7 @@
     <module>com.io7m.lwjgl.examples.yoga</module>
     <module>com.io7m.lwjgl.examples.zstd</module>
     <module>com.io7m.lwjgl.examples.llvm</module>
+    <module>com.io7m.lwjgl.examples.shaderc</module>
   </modules>
 
   <properties>
@@ -263,6 +264,11 @@
       <dependency>
         <groupId>org.lwjgl.osgi</groupId>
         <artifactId>org.lwjgl.rpmalloc</artifactId>
+        <version>${org.lwjgl.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.lwjgl.osgi</groupId>
+        <artifactId>org.lwjgl.shaderc</artifactId>
         <version>${org.lwjgl.version}</version>
       </dependency>
       <dependency>
