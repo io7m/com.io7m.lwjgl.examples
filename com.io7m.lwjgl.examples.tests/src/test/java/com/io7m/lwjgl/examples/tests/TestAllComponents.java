@@ -1,12 +1,15 @@
 package com.io7m.lwjgl.examples.tests;
 
 import org.apache.felix.framework.FrameworkFactory;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleException;
 import org.osgi.framework.Constants;
 
 import java.io.IOException;
+import java.lang.module.ModuleDescriptor;
+import java.lang.module.ModuleFinder;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -22,6 +25,67 @@ public final class TestAllComponents
 {
   private static final Logger LOG =
     Logger.getLogger(TestAllComponents.class.getCanonicalName());
+
+  /**
+   * Check that no package export conflicts were added whilst producing OSGi
+   * bundles.
+   *
+   * @throws IOException On errors
+   */
+
+  @Test
+  public void testConflicts()
+    throws IOException
+  {
+    final var modules = new ArrayList<ModuleDescriptor>();
+    final var jars = findJars();
+    for (final var jar : jars) {
+      final var moduleRef =
+        ModuleFinder.of(Paths.get(jar))
+          .findAll()
+          .iterator()
+          .next();
+
+      final var moduleDescriptor = moduleRef.descriptor();
+      if (moduleDescriptor.name().startsWith("com.io7m")) {
+        continue;
+      }
+      modules.add(moduleDescriptor);
+    }
+
+    Assertions.assertFalse(modules.isEmpty());
+
+    final var packageToModules = new HashMap<String, String>();
+    boolean failed = false;
+    for (final var descriptor : modules) {
+      for (final var export : descriptor.exports()) {
+        final var packageName = export.source();
+        final var moduleName = descriptor.name();
+        LOG.info(String.format(
+          "module %s exports %s",
+          moduleName,
+          packageName));
+        if (packageToModules.containsKey(packageName)) {
+          LOG.severe(String.format(
+            "package %s exported by modules: %s and %s",
+            packageName,
+            moduleName,
+            packageToModules.get(packageName))
+          );
+          failed = true;
+        } else {
+          packageToModules.put(packageName, moduleName);
+        }
+      }
+    }
+    Assertions.assertFalse(failed);
+  }
+
+  /**
+   * Check that all components can be resolved and executed.
+   *
+   * @throws Exception On errors
+   */
 
   @Test
   public void testResolveAllComponents()
@@ -84,7 +148,9 @@ public final class TestAllComponents
   {
     try (var stream = TestAllComponents.class.getResourceAsStream(
       "/com/io7m/lwjgl/examples/tests/jars.txt")) {
-      final var text = new String(stream.readAllBytes(), StandardCharsets.UTF_8);
+      final var text = new String(
+        stream.readAllBytes(),
+        StandardCharsets.UTF_8);
       return List.of(text.split(":"))
         .stream()
         .map(file -> Paths.get(file).toUri())
