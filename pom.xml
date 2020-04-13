@@ -55,10 +55,10 @@
     <module>com.io7m.lwjgl.examples.xxhash</module>
     <module>com.io7m.lwjgl.examples.yoga</module>
     <module>com.io7m.lwjgl.examples.zstd</module>
+    <module>com.io7m.lwjgl.examples.llvm</module>
   </modules>
 
   <properties>
-    <checkstyle.skip>true</checkstyle.skip>
     <io7m.api.previousVersion>0.0.1</io7m.api.previousVersion>
     <org.apache.felix.framework.version>6.0.1</org.apache.felix.framework.version>
     <org.apache.felix.log.version>1.2.0</org.apache.felix.log.version>
@@ -208,6 +208,11 @@
       <dependency>
         <groupId>org.lwjgl.osgi</groupId>
         <artifactId>org.lwjgl.meow</artifactId>
+        <version>${org.lwjgl.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.lwjgl.osgi</groupId>
+        <artifactId>org.lwjgl.llvm</artifactId>
         <version>${org.lwjgl.version}</version>
       </dependency>
       <dependency>

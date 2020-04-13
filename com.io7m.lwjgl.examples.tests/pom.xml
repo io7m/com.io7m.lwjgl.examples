@@ -71,6 +71,11 @@
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
+      <artifactId>com.io7m.lwjgl.examples.llvm</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
       <artifactId>com.io7m.lwjgl.examples.lmdb</artifactId>
       <version>${project.version}</version>
     </dependency>
@@ -229,12 +234,6 @@
     </testResources>
 
     <plugins>
-      <!-- Check style -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-checkstyle-plugin</artifactId>
-      </plugin>
-
       <!-- Generate a list of dependencies -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

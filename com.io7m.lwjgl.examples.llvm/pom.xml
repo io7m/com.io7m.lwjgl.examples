@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -6,16 +7,16 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>com.io7m.lwjgl.examples</groupId>
     <artifactId>com.io7m.lwjgl.examples</artifactId>
+    <groupId>com.io7m.lwjgl.examples</groupId>
     <version>0.0.1</version>
   </parent>
-  <artifactId>com.io7m.lwjgl.examples.yoga</artifactId>
+  <artifactId>com.io7m.lwjgl.examples.llvm</artifactId>
 
   <packaging>jar</packaging>
-  <description>LWJGL OSGi examples (Yoga)</description>
+  <description>LWJGL OSGi examples (llvm)</description>
   <url>http://github.com/io7m/org.lwjgl.example</url>
-  <name>com.io7m.lwjgl.examples.yoga</name>
+  <name>com.io7m.lwjgl.examples.llvm</name>
 
   <dependencies>
     <dependency>
@@ -31,7 +32,7 @@
 
     <dependency>
       <groupId>org.lwjgl.osgi</groupId>
-      <artifactId>org.lwjgl.yoga</artifactId>
+      <artifactId>org.lwjgl.llvm</artifactId>
     </dependency>
   </dependencies>
 
