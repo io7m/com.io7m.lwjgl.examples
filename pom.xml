@@ -8,7 +8,7 @@
   <parent>
     <groupId>com.io7m.primogenitor</groupId>
     <artifactId>com.io7m.primogenitor.full</artifactId>
-    <version>3.0.0</version>
+    <version>5.0.0</version>
   </parent>
 
   <groupId>com.io7m.lwjgl.examples</groupId>
@@ -58,13 +58,13 @@
   </modules>
 
   <properties>
+    <checkstyle.skip>true</checkstyle.skip>
     <io7m.api.previousVersion>0.0.1</io7m.api.previousVersion>
-    <org.lwjgl.version>3.2.1.2</org.lwjgl.version>
-
-    <org.apache.felix.scr.version>2.1.8</org.apache.felix.scr.version>
     <org.apache.felix.framework.version>6.0.1</org.apache.felix.framework.version>
-    <org.immutables.value.version>2.7.1</org.immutables.value.version>
     <org.apache.felix.log.version>1.2.0</org.apache.felix.log.version>
+    <org.apache.felix.scr.version>2.1.8</org.apache.felix.scr.version>
+    <org.immutables.value.version>2.7.1</org.immutables.value.version>
+    <org.lwjgl.version>3.2.3-SNAPSHOT</org.lwjgl.version>
   </properties>
 
   <licenses>
