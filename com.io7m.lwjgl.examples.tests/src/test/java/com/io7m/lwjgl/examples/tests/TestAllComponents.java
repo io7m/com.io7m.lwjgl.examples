@@ -101,7 +101,6 @@ public final class TestAllComponents
     config.put(Constants.FRAMEWORK_STORAGE_CLEAN, "true");
 
     final var framework = frameworks.newFramework(config);
-
     framework.start();
 
     try {
@@ -112,6 +111,20 @@ public final class TestAllComponents
         LOG.info("install: " + jar);
         bundles.add(context.installBundle(jar.toString()));
       }
+
+      framework.start();
+
+      final var func =
+        findBundle(bundles, "org.osgi.util.function");
+      func.start();
+
+      final var promise =
+        findBundle(bundles, "org.osgi.util.promise");
+      promise.start();
+
+      final var scr =
+        findBundle(bundles, "org.apache.felix.scr");
+      scr.start();
 
       for (final var bundle : bundles) {
         LOG.info("start: " + bundle.getSymbolicName());
@@ -128,6 +141,23 @@ public final class TestAllComponents
     } finally {
       framework.stop();
     }
+  }
+
+  private static Bundle findBundle(
+    final List<Bundle> bundles,
+    final String name)
+  {
+    return bundles.stream()
+      .filter(b -> {
+        final var symbolic = b.getSymbolicName();
+        if (symbolic != null) {
+          return symbolic.contains(name);
+        } else {
+          return false;
+        }
+      })
+      .findFirst()
+      .orElseThrow();
   }
 
   private static boolean isWindows()

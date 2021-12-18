@@ -210,9 +210,16 @@
       <artifactId>org.apache.felix.scr</artifactId>
     </dependency>
     <dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>org.osgi.util.promise</artifactId>
+    </dependency>
+
+    <!--
+    <dependency>
       <groupId>org.apache.felix</groupId>
       <artifactId>org.apache.felix.log</artifactId>
     </dependency>
+    -->
 
     <dependency>
       <groupId>org.junit.jupiter</groupId>
