@@ -52,7 +52,7 @@ public final class ZstandardComponent
 
     try {
       final var context = Zstd.ZSTD_createCCtx();
-      Zstd.nZSTD_freeCCtx(context);
+      Zstd.ZSTD_freeCCtx(context);
     } finally {
       LOG.info("onActivate: done");
     }
